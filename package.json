@@ -1,0 +1,26 @@
+{
+  "name": "imsflux",
+  "version": "0.1.0",
+  "description": "immutable simple flux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whizzter/imsflux.git"
+  },
+  "keywords": [
+    "react",
+    "data",
+    "flux",
+    "dataflow",
+    "event"
+  ],
+  "author": "Jonas Lund",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whizzter/imsflux/issues"
+  },
+  "homepage": "https://github.com/whizzter/imsflux#readme"
+}
