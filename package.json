@@ -18,7 +18,7 @@
     "event"
   ],
   "author": "Jonas Lund",
-  "license": "MIT",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/whizzter/imsflux/issues"
   },

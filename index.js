@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 // create a global store registry to hold data between reloads.
 if ("undefined" === typeof __imsflux_store_registry__) {
 	if ("undefined"!=typeof window) {
@@ -87,42 +85,5 @@ imsflux.store=function (name,initial=noinitial,functions=false) {
 }
 
 
-
-imsflux.connect=function(stores,Cls) {
-	let computeState=()=>{
-		return stores.reduce( (iv,storename)=>{
-			if ( storename in __imsflux_store_registry__) {
-				iv[storename]=__imsflux_store_registry__[storename].state;
-			}
-			return iv;
-		},{})
-	};
-	return class Wrapper extends Component {
-		constructor() {
-			super();
-			this.listeners=[];
-			this.state=computeState();
-		}
-
-		componentWillMount() {
-			this.listeners=stores.map((storename)=>{
-				let store=imsflux.store(storename);
-				let cb=()=>{
-					this.setState(computeState())
-				}
-				store.listen(cb);
-				return [store,cb];
-			});
-		}
-		componentWillUnmount() {
-			for (let kv of this.listeners) {
-				kv[0].unlisten(kv[1]);
-			}
-		}
-		render() {
-			return <Cls { ... this.props } { ... this.state } />
-		}
-	};
-};
 
 export default imsflux;
