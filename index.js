@@ -82,8 +82,17 @@ imsflux.store=function (name,initial=noinitial,functions=false) {
 	if (functions!==false)
 		store.functions=functions; // Object.assign(store,{functions});
 	return store._interface;
-}
+};
 
-
+imsflux.get=(store)=>imsflux.store(store).get();
+imsflux.trigger=(stores,fn)=>{
+	let intfn=()=>{
+		let args=stores.map((store)=>imsflux.get(store));
+		fn(...args);
+	};
+	for (let store of stores) {
+		imsflux.store(store).listen(intfn);
+	}
+};
 
 export default imsflux;
